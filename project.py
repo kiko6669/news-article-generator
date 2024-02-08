@@ -5,7 +5,7 @@ import requests
 openai.api_key = 'OPEN-AI-KEY'
 
 # Fetch headline from News API
-news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=d67ecec5cecd4a5a9bc90016c7042e5d'
+news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={News_API_KEY}'
 response_news = requests.get(news_api_url)
 
 if response_news.status_code == 200:
@@ -68,7 +68,7 @@ payload = {
     'contentFormat': 'markdown',
     'content': article_text,
     'tags': tags,
-    'publishStatus': 'public',  # Change to 'public' when ready to publish
+    'publishStatus': 'public',  # Change to 'public' when ready to publish or draft to make it a draft
 }
 
 response = requests.post('https://api.medium.com/v1/users/{user_id}/posts', headers=headers, json=payload)
